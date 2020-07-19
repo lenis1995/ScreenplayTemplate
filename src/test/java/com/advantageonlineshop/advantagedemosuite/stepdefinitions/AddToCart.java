@@ -44,7 +44,7 @@ public class AddToCart {
     }
     @When("^he signs in with username \"([^\"]*)\" email \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void heSignsInWithUsernameEmailAndPassword(String username, String email, String password    ) throws Exception {
-        Alejo.attemptsTo((Get.into(USER_BUTTON_LINK)), Get.into(CREATE_NEW_ACCOUNT), Complete.theRegister(username, email, password));
+
     }
     @Then("^he should be successfully logged on with username \"([^\"]*)\"$")
     public void heShouldBeSuccessfullyLoggedOnWithUsername(String username) throws Exception {

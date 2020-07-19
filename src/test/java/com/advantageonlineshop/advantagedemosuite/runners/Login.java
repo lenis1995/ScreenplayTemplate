@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions
         (
-                features = "src//test//resources//features",
-                glue = "com.advantageonlineshop.advantagedemosuite.stepdefinitions",
+                features = "src//test//resources//features//signIn.feature",
+                glue = "com.advantageonlineshop.advantagedemosuite.stepdefinitions.Login",
                 snippets = SnippetType.CAMELCASE
         )
 public class Login {

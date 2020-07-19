@@ -5,6 +5,7 @@ import com.advantageonlineshop.advantagedemosuite.tasks.Complete;
 import com.advantageonlineshop.advantagedemosuite.tasks.Get;
 import com.advantageonlineshop.advantagedemosuite.tasks.OpenTheBrowser;
 import com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage;
+import com.advantageonlineshop.advantagedemosuite.utils.UserData;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,17 +15,18 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON_LINK;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
+import static com.advantageonlineshop.advantagedemosuite.utils.UserData.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
 public class SignIn {
-
-    @Managed(driver = "chrome")
-    private WebDriver hisBrowser;
-    private Actor Alejo = Actor.named("Alejo");
-    private AdvantageDemoHomePage advantageDemoHomePage;
 
     public void setHisTimeout(WebDriver hisBrowser) {
         this.hisBrowser = hisBrowser;
@@ -32,36 +34,38 @@ public class SignIn {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         setHisTimeout(hisBrowser);
         hisBrowser.manage().window().maximize();
-        Alejo.can(BrowseTheWeb.with(hisBrowser));
+        hisBrowser.manage().deleteAllCookies();
+        User.can(BrowseTheWeb.with(hisBrowser));
     }
 
-    @Given("^that Alejo get to shopping page$")
-    public void thatAlejoGetToShoppingPage() throws Exception {
-        Alejo.wasAbleTo(OpenTheBrowser.on(advantageDemoHomePage));
-    }
-    @When("^he signs in with username \"([^\"]*)\" email \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void heSignsInWithUsernameEmailAndPassword(String username, String email, String password    ) throws Exception {
-        Alejo.attemptsTo((Get.into(USER_BUTTON_LINK)), Get.into(CREATE_NEW_ACCOUNT), Complete.theRegister(username, email, password));
-    }
-    @Then("^he should be successfully logged on with username \"([^\"]*)\"$")
-    public void heShouldBeSuccessfullyLoggedOnWithUsername(String username) throws Exception {
-      Alejo.attemptsTo(Check.theUsername(username));
-    }
-    @When("^he enters his valid data$")
-    public void heEntersHisValidData() throws Exception {
-
+    @Given("^that user get to AdvantageDemo shopping page$")
+    public void thatUserGetToAdvantageDemoShoppingPage() throws Exception {
+        User.wasAbleTo(OpenTheBrowser.on(advantageDemoHomePage));
     }
 
-    @When("^he choose a product$")
-    public void heChooseAProduct() throws Exception {
-
+    @Given("^access to Sign In form$")
+    public void accessToSignInForm() throws Exception {
+        User.attemptsTo((Get.into(USER_BUTTON_LINK)), Get.into(CREATE_NEW_ACCOUNT));
     }
 
-    @Then("^he should see the product in the cart$")
-    public void heShouldSeeTheProductInTheCart() throws Exception {
-
+    @When("^I fill all the required fields$")
+    public void iFillAllTheRequiredFields() throws Exception {
+        User.attemptsTo(Complete.theRegister(Username(),Email(),Password()));
     }
+
+    @Then("^I should be successfully logged on$")
+    public void iShouldBeSuccessfullyLoggedOn() throws Exception {
+        User.attemptsTo(Check.theUsername(User));
+    }
+
+    @Managed(driver = "chrome")
+    private WebDriver hisBrowser;
+    private Actor User = Actor.named("User");
+    private AdvantageDemoHomePage advantageDemoHomePage;
+    private Properties prop;
+    private FileInputStream filePath;
+
 }

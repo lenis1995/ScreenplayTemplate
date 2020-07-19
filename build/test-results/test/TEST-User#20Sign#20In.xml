@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="User Sign In" tests="1" skipped="1" failures="0" errors="0" timestamp="2020-07-19T20:40:43" hostname="LAPTOP-NFM24RP9" time="0.13">
+  <properties/>
+  <testcase name="AdvantageDemo Platform Sign in" classname="User Sign In" time="0.13">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
