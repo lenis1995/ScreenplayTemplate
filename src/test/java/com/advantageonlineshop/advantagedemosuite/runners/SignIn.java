@@ -12,5 +12,5 @@ import org.junit.runner.RunWith;
                 glue = "com.advantageonlineshop.advantagedemosuite.stepdefinitions",
                 snippets = SnippetType.CAMELCASE
         )
-public class AdvantageDemoRunner {
+public class SignIn {
 }

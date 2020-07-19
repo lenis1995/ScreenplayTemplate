@@ -13,12 +13,13 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.*;
+
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON_LINK;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
-public class AdvantageDemoStepDefinitions {
+public class Login {
 
     @Managed(driver = "chrome")
     private WebDriver hisBrowser;
