@@ -2,40 +2,35 @@ package com.advantageonlineshop.advantagedemosuite.stepdefinitions;
 
 import com.advantageonlineshop.advantagedemosuite.tasks.Check;
 import com.advantageonlineshop.advantagedemosuite.tasks.Complete;
-import com.advantageonlineshop.advantagedemosuite.tasks.Get;
 import com.advantageonlineshop.advantagedemosuite.tasks.OpenTheBrowser;
 import com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage;
-import com.advantageonlineshop.advantagedemosuite.utils.UserData;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON_LINK;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
 import static com.advantageonlineshop.advantagedemosuite.utils.UserData.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
 
 
 public class SignIn {
 
-    public void setHisTimeout(WebDriver hisBrowser) {
-        this.hisBrowser = hisBrowser;
-        hisBrowser.manage().timeouts().implicitlyWait(20, SECONDS);
-    }
-
     @Before
     public void setUp() throws IOException {
-        setHisTimeout(hisBrowser);
+        hisBrowser.manage().timeouts().implicitlyWait(10, SECONDS);
         hisBrowser.manage().window().maximize();
         hisBrowser.manage().deleteAllCookies();
         User.can(BrowseTheWeb.with(hisBrowser));
@@ -46,9 +41,10 @@ public class SignIn {
         User.wasAbleTo(OpenTheBrowser.on(advantageDemoHomePage));
     }
 
-    @Given("^access to Sign In form$")
+    @And("^access to Sign In form$")
     public void accessToSignInForm() throws Exception {
-        User.attemptsTo((Get.into(USER_BUTTON_LINK)), Get.into(CREATE_NEW_ACCOUNT));
+        User.attemptsTo(WaitUntil.the(USER_BUTTON, isClickable()));
+        User.attemptsTo((Click.on(USER_BUTTON)), Click.on(CREATE_NEW_ACCOUNT));
     }
 
     @When("^I fill all the required fields$")

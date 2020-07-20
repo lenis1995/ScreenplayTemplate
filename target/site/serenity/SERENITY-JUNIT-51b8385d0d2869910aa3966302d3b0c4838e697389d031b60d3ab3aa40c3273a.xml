@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="User Sign In" skipped="1" tests="1" time="0.87" timestamp="2020-07-19 03:40:43"><testcase name="AdvantageDemo Platform Sign in"><skipped/></testcase></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="User Sign In" skipped="0" tests="1" time="19.26" timestamp="2020-07-19 07:56:45"><testcase name="AdvantageDemo Platform Sign in"><error type="java.lang.NullPointerException"/><system-err>null&#13;
+com.advantageonlineshop.advantagedemosuite.utils.UserData.Username(UserData.java:16)&#13;
+com.advantageonlineshop.advantagedemosuite.stepdefinitions.SignIn.iFillAllTheRequiredFields(SignIn.java:52)&#13;
+✽.I fill all the required fields(src/test/resources/features/signIn.feature:11)&#13;
+</system-err></testcase></testsuite>
