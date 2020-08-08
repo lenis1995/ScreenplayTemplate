@@ -4,6 +4,8 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Scroll;
+
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -26,6 +28,7 @@ public class Complete implements Task {
                 Enter.theValue(email).into(USER_EMAIL),
                 Enter.theValue(password).into(USER_PASSWORD),
                 Enter.theValue(password).into(USER_CONFIRM_PASSWORD),
+                Scroll.to(ALLOW_OFFERS),
                 Click.on(ALLOW_OFFERS),
                 Click.on(CONDITIONS_CHECKBOX),
                 Click.on(REGISTER_BUTTON));

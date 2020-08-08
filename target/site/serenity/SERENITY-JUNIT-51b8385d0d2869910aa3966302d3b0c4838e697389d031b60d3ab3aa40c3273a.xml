@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="User Sign In" skipped="0" tests="1" time="19.26" timestamp="2020-07-19 07:56:45"><testcase name="AdvantageDemo Platform Sign in"><error type="java.lang.NullPointerException"/><system-err>null&#13;
-com.advantageonlineshop.advantagedemosuite.utils.UserData.Username(UserData.java:16)&#13;
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="User Sign In" skipped="0" tests="1" time="23.6" timestamp="2020-07-20 05:52:31"><testcase name="AdvantageDemo Platform Sign in"><error message="Keys to send should be a not null CharSequence" type="java.lang.IllegalArgumentException">Keys to send should be a not null CharSequence</error><system-err>Keys to send should be a not null CharSequence&#13;
+com.advantageonlineshop.advantagedemosuite.tasks.Complete.performAs(Complete.java:26)&#13;
 com.advantageonlineshop.advantagedemosuite.stepdefinitions.SignIn.iFillAllTheRequiredFields(SignIn.java:52)&#13;
-✽.I fill all the required fields(src/test/resources/features/signIn.feature:11)&#13;
+cucumber.runner.Runner.runPickle(Runner.java:80)&#13;
 </system-err></testcase></testsuite>

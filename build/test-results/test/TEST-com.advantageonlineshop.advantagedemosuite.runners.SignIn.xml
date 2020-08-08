@@ -7,10 +7,39 @@
 
 1 Scenarios (?[31m1 failed?[0m)
 4 Steps (?[31m1 failed?[0m, ?[36m1 skipped?[0m, ?[32m2 passed?[0m)
-0m19,767s
+0m24,458s
 
-java.lang.NullPointerException
-	at com.advantageonlineshop.advantagedemosuite.utils.UserData.Username(UserData.java:16)
+java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:97)
+	at net.serenitybdd.core.pages.WebElementFacadeImpl.type(WebElementFacadeImpl.java:720)
+	at net.serenitybdd.screenplay.actions.EnterValueIntoTarget.performAs(EnterValueIntoTarget.java:18)
+	at net.serenitybdd.screenplay.actions.EnterValueIntoTarget$$EnhancerByCGLIB$$4e987eb1.CGLIB$performAs$0(<generated>)
+	at net.serenitybdd.screenplay.actions.EnterValueIntoTarget$$EnhancerByCGLIB$$4e987eb1$$FastClassByCGLIB$$da8429ac.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:478)
+	at net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:463)
+	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:438)
+	at net.thucydides.core.steps.StepInterceptor.runOrSkipMethod(StepInterceptor.java:179)
+	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:166)
+	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:72)
+	at net.serenitybdd.screenplay.actions.EnterValueIntoTarget$$EnhancerByCGLIB$$4e987eb1.performAs(<generated>)
+	at net.serenitybdd.screenplay.Actor.performTask(Actor.java:223)
+	at net.serenitybdd.screenplay.Actor.perform(Actor.java:204)
+	at net.serenitybdd.screenplay.Actor.attemptsTo(Actor.java:161)
+	at com.advantageonlineshop.advantagedemosuite.tasks.Complete.performAs(Complete.java:26)
+	at com.advantageonlineshop.advantagedemosuite.tasks.Complete$$EnhancerByCGLIB$$7fda5216.CGLIB$performAs$0(<generated>)
+	at com.advantageonlineshop.advantagedemosuite.tasks.Complete$$EnhancerByCGLIB$$7fda5216$$FastClassByCGLIB$$f93ace3e.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:478)
+	at net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:463)
+	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:438)
+	at net.thucydides.core.steps.StepInterceptor.runOrSkipMethod(StepInterceptor.java:179)
+	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:166)
+	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:72)
+	at com.advantageonlineshop.advantagedemosuite.tasks.Complete$$EnhancerByCGLIB$$7fda5216.performAs(<generated>)
+	at net.serenitybdd.screenplay.Actor.performTask(Actor.java:223)
+	at net.serenitybdd.screenplay.Actor.perform(Actor.java:204)
+	at net.serenitybdd.screenplay.Actor.attemptsTo(Actor.java:161)
 	at com.advantageonlineshop.advantagedemosuite.stepdefinitions.SignIn.iFillAllTheRequiredFields(SignIn.java:52)
 	at ?.I fill all the required fields(src/test/resources/features/signIn.feature:11)
 
