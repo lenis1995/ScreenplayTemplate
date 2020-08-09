@@ -15,28 +15,27 @@ import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
 import java.io.IOException;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.PAGE_LOADER;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
-
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 
 public class SignIn {
 
     @Managed(driver = "chrome")
-    private WebDriver hisBrowser;
+    public WebDriver hisBrowser;
 
     @Before
     public void setUp() throws IOException {
         OnStage.setTheStage(new OnlineCast());
         OnStage.theActorCalled("User")
                 .can(BrowseTheWeb.with(hisBrowser));
-        hisBrowser.manage().timeouts().implicitlyWait(15, SECONDS);
+        hisBrowser.manage().timeouts().implicitlyWait(10, SECONDS);
         hisBrowser.manage().window().maximize();
         hisBrowser.manage().deleteAllCookies();
     }
-
     @Given("^that user get to AdvantageDemo shopping page$")
     public void thatUserGetToAdvantageDemoShoppingPage() throws Exception {
         theActorInTheSpotlight().attemptsTo(OpenTheBrowser.on(advantageDemoHomePage()));
@@ -44,17 +43,22 @@ public class SignIn {
 
     @And("^access to Sign In form$")
     public void accessToSignInForm() throws Exception {
-        theActorInTheSpotlight().attemptsTo(WaitUntil.the(USER_BUTTON, isEnabled()));
-        theActorInTheSpotlight().attemptsTo((Click.on(USER_BUTTON)), Click.on(CREATE_NEW_ACCOUNT));
+        //Actor Expected Conditions Waits
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the(PAGE_LOADER,isNotVisible()));
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the(USER_BUTTON,isClickable()));
+        //Actor Interactions
+        theActorInTheSpotlight().attemptsTo((Click.on(USER_BUTTON)));
+        //Actor Expected Conditions Waits
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the(CREATE_NEW_ACCOUNT,isClickable()));
+        //Actor Interactions
+        theActorInTheSpotlight().attemptsTo((Click.on(CREATE_NEW_ACCOUNT)));
     }
-
     @When("^I fill all the required fields$")
     public void iFillAllTheRequiredFields() throws Exception {
-//        User.attemptsTo(Complete.theRegister();
+//      User.attemptsTo(Complete.theRegister();
     }
 
     @Then("^I should be successfully logged on$")
     public void iShouldBeSuccessfullyLoggedOn() throws Exception {
     }
-
 }
