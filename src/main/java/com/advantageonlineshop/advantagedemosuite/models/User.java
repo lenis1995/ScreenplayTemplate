@@ -1,4 +1,4 @@
-/*package com.advantageonlineshop.advantagedemosuite.models;
+package com.advantageonlineshop.advantagedemosuite.models;
 
 public class User {
 
@@ -27,9 +27,7 @@ public class User {
         this.postalCode = postalCode;
     }
     //GETTERS
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
     public String getFirstName() { return firstName; }
@@ -51,7 +49,22 @@ public class User {
     public void setState(String state) { this.state=state; }
     public void setPostalCode(String postalCode) { this.postalCode=postalCode; }
 
+    public static User createUser(String[] userData) {
+        String username = userData[0];
+        String email = userData[1];
+        String password = userData[2];
+        String firstName = userData[3];
+        String lastName = userData[4];
+        String phoneNumber = userData[5];
+        String city = userData[6];
+        String address = userData[7];
+        String state = userData[8];
+        String postalCode = userData[9];
+
+        return new User(username, email, password, firstName, lastName, phoneNumber, city, address, state, postalCode);
+    }
+
     @Override public String toString() {
         return "User [name=" + username + ", firstname=" + firstName + ", lastname=" + lastName + "]"; }
 
-}*/
+}

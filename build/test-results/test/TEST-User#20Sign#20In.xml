@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="User Sign In" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-10T23:07:49" hostname="LAPTOP-LRP8D2FO" time="23.317">
+<testsuite name="User Sign In" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-11T01:10:08" hostname="LAPTOP-LRP8D2FO" time="12.019">
   <properties/>
-  <testcase name="AdvantageDemo Platform Sign in" classname="User Sign In" time="23.317"/>
+  <testcase name="AdvantageDemo Platform Sign in" classname="User Sign In" time="12.019"/>
   <system-out><![CDATA[
 
 
@@ -13,26 +13,26 @@
 
 
 
-seglintonb@google.it
-Sloan
-seglintonb@google.it
-Sloan
-seglintonb@google.it
-Sloan
+email
+firstname
+rdunsire9@yahoo.com
+Rozella
+mgrimblebya@usda.gov
+Marci
 seglintonb@google.it
 Sloan
 
 
 
 ]]></system-out>
-  <system-err><![CDATA[Aug 10, 2020 6:07:49 PM org.openqa.selenium.remote.DesiredCapabilities chrome
+  <system-err><![CDATA[Aug 10, 2020 8:10:08 PM org.openqa.selenium.remote.DesiredCapabilities chrome
 INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`
-Starting ChromeDriver 83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416}) on port 11196
+Starting ChromeDriver 83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416}) on port 26160
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-[1597100872.459][WARNING]: This version of ChromeDriver has not been tested with Chrome version 84.
-Aug 10, 2020 6:07:54 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1597108210.326][WARNING]: This version of ChromeDriver has not been tested with Chrome version 84.
+Aug 10, 2020 8:10:12 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
