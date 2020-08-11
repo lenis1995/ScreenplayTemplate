@@ -1,7 +1,8 @@
 package com.advantageonlineshop.advantagedemosuite.stepdefinitions;
 
+
 import com.advantageonlineshop.advantagedemosuite.models.User;
-import com.advantageonlineshop.advantagedemosuite.utils.SelectRandom;
+import com.advantageonlineshop.advantagedemosuite.utils.ReadCSVData;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -17,11 +18,12 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.openqa.selenium.WebDriver;
 import java.io.IOException;
+import java.util.List;
+
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.PAGE_LOADER;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
-import static com.advantageonlineshop.advantagedemosuite.utils.SelectRandom.user;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
@@ -30,10 +32,11 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 public class SignIn {
 
     @Managed(driver = "chrome")
-    public WebDriver hisBrowser;
+    private WebDriver hisBrowser;
 
     @Steps
-    SelectRandom selectRandom = new SelectRandom();
+    ReadCSVData reader=new ReadCSVData();
+    List<User> users=reader.randomUser();
 
     @Before
     public void setUp() throws IOException {
@@ -63,11 +66,14 @@ public class SignIn {
     }
     @When("^I fill all the required fields$")
     public void iFillAllTheRequiredFields() throws Exception {
-        User randomUser= SelectRandom.user("src/test/resources/userdata/usersData.csv");
-        //This is a testcscscscscscscs
+        for (User u:users){
+            System.out.println(u.getEmail());
+            System.out.println(u.getFirstName());
+        }
     }
 
     @Then("^I should be successfully logged on$")
     public void iShouldBeSuccessfullyLoggedOn() throws Exception {
+
     }
 }
