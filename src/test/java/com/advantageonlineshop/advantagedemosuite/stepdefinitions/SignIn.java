@@ -17,12 +17,13 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.io.IOException;
 import java.util.List;
 
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.PAGE_LOADER;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.USER_BUTTON;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -60,7 +61,7 @@ public class SignIn {
         //Actor Interactions
         theActorInTheSpotlight().attemptsTo((Click.on(USER_BUTTON)));
         //Actor Expected Conditions Waits
-        theActorInTheSpotlight().wasAbleTo(WaitUntil.the(CREATE_NEW_ACCOUNT,isClickable()));
+        theActorInTheSpotlight().wasAbleTo();
         //Actor Interactions
         theActorInTheSpotlight().attemptsTo((Click.on(CREATE_NEW_ACCOUNT)));
     }

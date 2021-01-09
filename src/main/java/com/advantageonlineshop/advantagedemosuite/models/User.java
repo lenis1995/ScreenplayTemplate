@@ -64,7 +64,4 @@ public class User {
         return new User(username, email, password, firstName, lastName, phoneNumber, city, address, state, postalCode);
     }
 
-    @Override public String toString() {
-        return "User [name=" + username + ", firstname=" + firstName + ", lastname=" + lastName + "]"; }
-
 }
