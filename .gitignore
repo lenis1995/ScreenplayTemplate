@@ -1,6 +1,7 @@
 /target
-*.gradle
+*/.gradle
 *.html
 *.css
 *.xml
 *.bin
+/build
