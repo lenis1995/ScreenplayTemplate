@@ -8,26 +8,35 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.questions.WebElementQuestion;
+import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import net.serenitybdd.screenplay.waits.WaitUntilTargetIsReady;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.io.IOException;
 import java.util.List;
 
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.UserMenuObjects.CREATE_NEW_ACCOUNT;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.SIGN_UP_FORM;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
+import static net.serenitybdd.screenplay.targets.EnsureFieldVisible.ensureThat;
 
 @SuppressWarnings("ALL")
 public class SignIn {
@@ -56,21 +65,20 @@ public class SignIn {
     @And("^access to Sign In form$")
     public void accessToSignInForm() throws Exception {
         //Actor Expected Conditions Waits
-        theActorInTheSpotlight().wasAbleTo(WaitUntil.the(PAGE_LOADER,isNotVisible()));
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the(PAGE_LOADER,isNotCurrentlyVisible()));
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the(USER_BUTTON,isClickable()));
         //Actor Interactions
         theActorInTheSpotlight().attemptsTo((Click.on(USER_BUTTON)));
         //Actor Expected Conditions Waits
-        theActorInTheSpotlight().wasAbleTo();
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the((LOGIN_MODAL),isVisible()));
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the((CREATE_NEW_ACCOUNT_BUTTON),isVisible()));
         //Actor Interactions
-        theActorInTheSpotlight().attemptsTo((Click.on(CREATE_NEW_ACCOUNT)));
+        theActorInTheSpotlight().attemptsTo((Click.on(CREATE_NEW_ACCOUNT_BUTTON)));
     }
     @When("^I fill all the required fields$")
     public void iFillAllTheRequiredFields() throws Exception {
-        for (User u:users){
-            System.out.println(u.getEmail());
-            System.out.println(u.getFirstName());
-        }
+      theActorInTheSpotlight().wasAbleTo(WaitUntil.the((SIGN_UP_FORM),isVisible()));
+
     }
 
     @Then("^I should be successfully logged on$")

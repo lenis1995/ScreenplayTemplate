@@ -16,20 +16,12 @@ import static com.advantageonlineshop.advantagedemosuite.models.User.createUser;
 
 public class ReadCSVData {
 
-    public static void main(String[] args) {
-        List<User> users = randomUser();
-
-        for (User u : users) {
-            System.out.println(u);
-        }
-    }
-
     public static List<User> randomUser() {
 
         List<User> users = new ArrayList<>();
         Path pathToFile = Paths.get("src/test/resources/userdata/usersData.csv");
 
-        try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
+        try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.UTF_8)) {
 
             String line = br.readLine();
             while (line != null) {

@@ -4,6 +4,7 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class RegisterPageObjects {
 
+    public static final Target SIGN_UP_FORM = Target.the("SignUp form container").locatedBy("#formCover");
     public static final Target USER_NAME = Target.the("Username text field").locatedBy("[name='usernameRegisterPage']");
     public static final Target USER_EMAIL = Target.the("Username text field").locatedBy("[name='emailRegisterPage']");
     public static final Target USER_PASSWORD = Target.the("Username text field").locatedBy("[name='passwordRegisterPage']");
