@@ -9,7 +9,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
@@ -23,7 +22,6 @@ import java.io.IOException;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.SIGN_UP_FORM;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.USER_NAME;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
@@ -69,10 +67,8 @@ public class SignIn {
         //Actor Expected Conditions Waits
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the((SIGN_UP_FORM),isVisible()));
         theActorInTheSpotlight().wasAbleTo(
-              Click.on(USER_NAME),
-              Enter.theValue(userInfo.getUsername()).into(USER_NAME)
+
         );
-      Thread.sleep(3000);
     }
 
     @Then("^I should be successfully logged on$")
