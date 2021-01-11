@@ -75,6 +75,6 @@ public class SignIn {
 
     @Then("^I should be successfully logged on$")
     public void iShouldBeSuccessfullyLoggedOn() throws Exception {
-
+    //new line
     }
 }
