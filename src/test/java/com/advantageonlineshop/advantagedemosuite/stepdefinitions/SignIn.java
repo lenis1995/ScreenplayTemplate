@@ -1,42 +1,30 @@
 package com.advantageonlineshop.advantagedemosuite.stepdefinitions;
 
-
 import com.advantageonlineshop.advantagedemosuite.models.User;
-import com.advantageonlineshop.advantagedemosuite.utils.ReadCSVData;
+import com.advantageonlineshop.advantagedemosuite.utils.Select;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
-import net.serenitybdd.screenplay.questions.WebElementQuestion;
-import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import net.serenitybdd.screenplay.waits.WaitUntilTargetIsReady;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-
 import java.io.IOException;
-import java.util.List;
-
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.SIGN_UP_FORM;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.USER_NAME;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
-import static net.serenitybdd.screenplay.targets.EnsureFieldVisible.ensureThat;
 
 @SuppressWarnings("ALL")
 public class SignIn {
@@ -45,8 +33,7 @@ public class SignIn {
     private WebDriver hisBrowser;
 
     @Steps
-    ReadCSVData reader=new ReadCSVData();
-    List<User> users=reader.randomUser();
+    User randomUser = Select.RandomUser();
 
     @Before
     public void setUp() throws IOException {
@@ -77,8 +64,13 @@ public class SignIn {
     }
     @When("^I fill all the required fields$")
     public void iFillAllTheRequiredFields() throws Exception {
-      theActorInTheSpotlight().wasAbleTo(WaitUntil.the((SIGN_UP_FORM),isVisible()));
-
+        //Actor Expected Conditions Waits
+        theActorInTheSpotlight().wasAbleTo(WaitUntil.the((SIGN_UP_FORM),isVisible()));
+        theActorInTheSpotlight().wasAbleTo(
+              Click.on(USER_NAME),
+              Enter.theValue(randomUser.getUsername()).into(USER_NAME)
+        );
+      Thread.sleep(3000);
     }
 
     @Then("^I should be successfully logged on$")
