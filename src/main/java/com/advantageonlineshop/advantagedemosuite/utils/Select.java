@@ -1,6 +1,7 @@
 package com.advantageonlineshop.advantagedemosuite.utils;
 
 import com.advantageonlineshop.advantagedemosuite.models.User;
+
 import java.util.List;
 import java.util.Random;
 
