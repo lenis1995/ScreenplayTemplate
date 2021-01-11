@@ -35,7 +35,7 @@ public class SignIn {
     private WebDriver hisBrowser;
 
     @Steps
-    User randomUser = Select.RandomUser();
+    User userInfo = Select.RandomUser();
 
     @Before
     public void setUp() throws IOException {
@@ -70,7 +70,7 @@ public class SignIn {
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the((SIGN_UP_FORM),isVisible()));
         theActorInTheSpotlight().wasAbleTo(
               Click.on(USER_NAME),
-              Enter.theValue(randomUser.getUsername()).into(USER_NAME)
+              Enter.theValue(userInfo.getUsername()).into(USER_NAME)
         );
       Thread.sleep(3000);
     }
