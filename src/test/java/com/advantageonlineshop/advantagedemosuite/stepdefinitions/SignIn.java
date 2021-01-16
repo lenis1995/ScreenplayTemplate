@@ -1,7 +1,8 @@
 package com.advantageonlineshop.advantagedemosuite.stepdefinitions;
 
 import com.advantageonlineshop.advantagedemosuite.models.User;
-import com.advantageonlineshop.advantagedemosuite.utils.Select;
+import com.advantageonlineshop.advantagedemosuite.tasks.signUp.*;
+import com.advantageonlineshop.advantagedemosuite.utils.SelectRandom;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -10,6 +11,8 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
+import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.waits.WaitUntil;
@@ -21,7 +24,7 @@ import java.io.IOException;
 
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.SIGN_UP_FORM;
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
@@ -33,7 +36,7 @@ public class SignIn {
     private WebDriver hisBrowser;
 
     @Steps
-    User userInfo = Select.RandomUser();
+    User userInfo = SelectRandom.User();
 
     @Before
     public void setUp() throws IOException {
@@ -67,8 +70,20 @@ public class SignIn {
         //Actor Expected Conditions Waits
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the((SIGN_UP_FORM),isVisible()));
         theActorInTheSpotlight().wasAbleTo(
-
+                SetUsername.with(userInfo),
+                SetEmail.with(userInfo),
+                SetPassword.with(userInfo),
+                SetPasswordConfirmation.with(userInfo),
+                SetFirstname.with(userInfo),
+                SetLastname.with(userInfo),
+                SetPhoneNumber.with(userInfo),
+                Scroll.to(USER_FIRST_NAME),
+                SelectFromOptions.byIndex(5).from(USER_COUNTRY),
+                SetCity.with(userInfo),
+                SetAddress.with(userInfo),
+                SetPostalCode.with(userInfo)
         );
+
     }
 
     @Then("^I should be successfully logged on$")
