@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.USER_ADDRESS;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
+
 public class SetAddress implements Task {
 
     public SetAddress(User user){
