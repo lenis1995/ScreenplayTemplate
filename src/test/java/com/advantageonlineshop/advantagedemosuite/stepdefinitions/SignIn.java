@@ -81,7 +81,10 @@ public class SignIn {
                 SelectFromOptions.byIndex(5).from(USER_COUNTRY),
                 SetCity.with(userInfo),
                 SetAddress.with(userInfo),
-                SetPostalCode.with(userInfo)
+                SetDepartment.with(userInfo),
+                SetPostalCode.with(userInfo),
+                AcceptPage.conditions(),
+                Finish.register()
         );
 
     }
