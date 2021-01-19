@@ -24,5 +24,5 @@ public class SetAddress implements Task {
     public static SetAddress with(User user) {
         return instrumented(SetAddress.class, user);
     }
-    private User user;
+    private final User user;
 }

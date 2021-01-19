@@ -14,7 +14,7 @@ import static com.advantageonlineshop.advantagedemosuite.constants.UserData.USER
 import static com.advantageonlineshop.advantagedemosuite.models.User.createUser;
 
 
-class GenerateUsers {
+public class GenerateUsers {
 
     public static List<User> fromCSVFile() {
 

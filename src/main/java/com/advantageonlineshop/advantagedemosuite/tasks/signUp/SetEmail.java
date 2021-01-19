@@ -24,5 +24,5 @@ public class SetEmail implements Task {
     public static SetEmail with(User user) {
         return instrumented(SetEmail.class, user);
     }
-    private User user;
+    private final User user;
 }

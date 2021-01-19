@@ -17,9 +17,10 @@ public class RegisterPageObjects {
     public static final Target USER_FIRST_NAME = Target.the("User name text field").locatedBy("[name='first_nameRegisterPage']");
     public static final Target USER_LAST_NAME = Target.the("User lastname text field").locatedBy("[name='last_nameRegisterPage']");
     public static final Target USER_PHONE_NUMBER = Target.the("User phone number").locatedBy("[name='phone_numberRegisterPage']");
-    public static final Target USER_COUNTRY = Target.the("User country text field").locatedBy("[name='countryListboxRegisterPage']");
+    public static final Target USER_COUNTRY = Target.the("User country text field").locatedBy("//select[@name='countryListboxRegisterPage']");
     public static final Target USER_CITY = Target.the("User city text field").locatedBy("[name='cityRegisterPage']");
     public static final Target USER_ADDRESS = Target.the("User address text field").locatedBy("[name='addressRegisterPage']");
     public static final Target USER_DEPARTMENT = Target.the("User state/department/province text field").locatedBy("[name='state_/_province_/_regionRegisterPage']");
     public static final Target USER_POSTAL_CODE = Target.the("User postal code text field").locatedBy("[name='postal_codeRegisterPage']");
+    public static final Target COUNTRY_OPTIONS = Target.the("Country Dropdown Options").locatedBy("//select[@name='countryListboxRegisterPage']//option");
 }

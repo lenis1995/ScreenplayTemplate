@@ -1,28 +1,29 @@
 package com.advantageonlineshop.advantagedemosuite.tasks.signUp;
 
-import com.advantageonlineshop.advantagedemosuite.models.User;
+import com.advantageonlineshop.advantagedemosuite.utils.SelectRandom;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
-import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.USER_ADDRESS;
+import net.serenitybdd.screenplay.actions.SelectFromOptions;
+import net.serenitybdd.screenplay.targets.Target;
+
+import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.COUNTRY_OPTIONS;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SetCountry implements Task {
 
-    public SetCountry(User user){
-        this.user = user;
+    public SetCountry(Target target){
+        this.target = target;
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(USER_ADDRESS),
-                Enter.theValue(user.getAddress()).into(USER_ADDRESS)
+                SelectFromOptions.byIndex(SelectRandom.country(actor,COUNTRY_OPTIONS)).from(target)
         );
     }
-    public static SetCountry with(User user) {
-        return instrumented(SetCountry.class, user);
+    public static SetCountry as(Target target) {
+        return instrumented(SetCountry.class,target);
     }
-    private User user;
+
+    private final Target target;
 }

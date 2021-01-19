@@ -24,5 +24,5 @@ public class SetCity implements Task {
     public static SetCity with(User user) {
         return instrumented(SetCity.class, user);
     }
-    private User user;
+    private final User user;
 }

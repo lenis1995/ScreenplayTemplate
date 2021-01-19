@@ -24,5 +24,5 @@ public class SetPhoneNumber implements Task {
     public static SetPhoneNumber with(User user) {
         return instrumented(SetPhoneNumber.class, user);
     }
-    private User user;
+    private final User user;
 }

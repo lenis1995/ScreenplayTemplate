@@ -24,5 +24,5 @@ public class SetPostalCode implements Task {
     public static SetPostalCode with(User user) {
         return instrumented(SetPostalCode.class, user);
     }
-    private User user;
+    private final User user;
 }

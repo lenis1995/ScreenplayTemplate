@@ -24,5 +24,5 @@ public class SetUsername implements Task {
     public static SetUsername with(User user) {
         return instrumented(SetUsername.class, user);
     }
-    private User user;
+    private final User user;
 }

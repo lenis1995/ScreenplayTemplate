@@ -2,16 +2,16 @@ package com.advantageonlineshop.advantagedemosuite.models;
 
 public class User {
 
-    private String username;
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String city;
-    private String address;
-    private String state;
-    private String postalCode;
+    private final String username;
+    private final String email;
+    private final String password;
+    private final String firstName;
+    private final String lastName;
+    private final String phoneNumber;
+    private final String city;
+    private final String address;
+    private final String state;
+    private final String postalCode;
 
     public User(String username, String email, String password, String firstName, String lastName, String phoneNumber, String city, String address, String state, String postalCode) {
 
@@ -38,17 +38,6 @@ public class User {
     public String getState() { return state; }
     public String getPostalCode() { return postalCode; }
     //SETTERS
-    public void setUsername(String username) { this.username=username;}
-    public void setEmail(String email) { this.email=email; }
-    public void setPassword(String password) { this.password=password; }
-    public void setFirstName(String firstName) { this.firstName=firstName; }
-    public void setLastName(String lastName) { this.lastName=lastName; }
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber=phoneNumber; }
-    public void setCity(String city) { this.city=city; }
-    public void setAddress(String address) { this.address=address; }
-    public void setState(String state) { this.state=state; }
-    public void setPostalCode(String postalCode) { this.postalCode=postalCode; }
-
     public static User createUser(String[] userData) {
         String username = userData[0];
         String email = userData[1];

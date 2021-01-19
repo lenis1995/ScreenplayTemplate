@@ -24,5 +24,5 @@ public class SetPassword implements Task {
     public static SetPassword with(User user) {
         return instrumented(SetPassword.class, user);
     }
-    private User user;
+    private final User user;
 }

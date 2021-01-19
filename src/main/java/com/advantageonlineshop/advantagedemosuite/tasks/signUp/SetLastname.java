@@ -24,5 +24,5 @@ public class SetLastname implements Task {
     public static SetLastname with(User user) {
         return instrumented(SetLastname.class, user);
     }
-    private User user;
+    private final User user;
 }

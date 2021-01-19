@@ -12,7 +12,6 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actions.Scroll;
-import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.waits.WaitUntil;
@@ -25,6 +24,7 @@ import java.io.IOException;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.AdvantageDemoHomePage.advantageDemoHomePage;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.HomePageObjects.*;
 import static com.advantageonlineshop.advantagedemosuite.userinterfaces.RegisterPageObjects.*;
+import static com.advantageonlineshop.advantagedemosuite.utils.Highlighter.highlightElement;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
@@ -36,7 +36,7 @@ public class SignIn {
     private WebDriver hisBrowser;
 
     @Steps
-    User userInfo = SelectRandom.User();
+    User userInfo = SelectRandom.user();
 
     @Before
     public void setUp() throws IOException {
@@ -58,11 +58,13 @@ public class SignIn {
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the(PAGE_LOADER,isNotCurrentlyVisible()));
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the(USER_BUTTON,isClickable()));
         //Actor Interactions
+        highlightElement(hisBrowser,USER_BUTTON.resolveFor(theActorInTheSpotlight()));
         theActorInTheSpotlight().attemptsTo((Click.on(USER_BUTTON)));
         //Actor Expected Conditions Waits
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the((LOGIN_MODAL),isVisible()));
         theActorInTheSpotlight().wasAbleTo(WaitUntil.the((CREATE_NEW_ACCOUNT_BUTTON),isVisible()));
         //Actor Interactions
+        highlightElement(hisBrowser,CREATE_NEW_ACCOUNT_BUTTON.resolveFor(theActorInTheSpotlight()));
         theActorInTheSpotlight().attemptsTo((Click.on(CREATE_NEW_ACCOUNT_BUTTON)));
     }
     @When("^I fill all the required fields$")
@@ -78,7 +80,7 @@ public class SignIn {
                 SetLastname.with(userInfo),
                 SetPhoneNumber.with(userInfo),
                 Scroll.to(USER_FIRST_NAME),
-                SelectFromOptions.byIndex(5).from(USER_COUNTRY),
+                SetCountry.as(USER_COUNTRY),
                 SetCity.with(userInfo),
                 SetAddress.with(userInfo),
                 SetDepartment.with(userInfo),

@@ -26,5 +26,5 @@ public class SetPasswordConfirmation implements Task {
         return instrumented(SetPasswordConfirmation.class, user);
     }
 
-    private User user;
+    private final User user;
 }
